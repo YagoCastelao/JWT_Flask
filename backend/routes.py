@@ -1,11 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from .models import db, User
-from .config import Config
+from .models import User
+from . import app, db
 
-app = Flask(__name__)
-app.config.from_object(Config)
-db.init_app(app)
 jwt = JWTManager(app)
 
 @app.route('/signup', methods=['POST'])
